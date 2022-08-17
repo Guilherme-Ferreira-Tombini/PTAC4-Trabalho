@@ -1,0 +1,9 @@
+body{
+    background-color:rgb(139, 139, 139);
+}
+img{
+ height: 500px;
+}
+.carousel{
+    border:1px solid black
+}
