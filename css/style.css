@@ -1,9 +1,17 @@
 body{
     background-color:rgb(139, 139, 139);
 }
-img{
- height: 400px;
-}
 .carousel{
     border:1px solid black
+}
+
+#textos{
+    display: none;
+    width: 100%;
+}
+
+@media (max-width:767px){
+    #textos{
+        display: block;
+    }
 }
