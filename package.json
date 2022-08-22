@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
+  },
+  "name": "atividade-bootstrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guilherme-Ferreira-Tombini/PTAC4-Trabalho.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guilherme-Ferreira-Tombini/PTAC4-Trabalho/issues"
+  },
+  "homepage": "https://github.com/Guilherme-Ferreira-Tombini/PTAC4-Trabalho#readme",
+  "description": ""
+}
