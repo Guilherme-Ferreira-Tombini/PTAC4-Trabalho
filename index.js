@@ -10,18 +10,23 @@ app.engine('hbs', hbs.engine({
 }));
 app.set('view engine', 'hbs');
 
+
 //rota inicial 
 //rederiza o home.hbs para abra dentro da tag {{{body}}} no layout
 app.get("/", (req, res)=>{
     res.render('home');
 })
 
-app.get("/formulario", (req, res)=>{
+app.get("/cad_users", (req, res)=>{
     res.render('formulario');
 })
 
-app.get("/sobre", (req, res)=>{
-    res.render('sobre');
+app.get("/exibir_users", (req,res) =>{
+res.render('exibir_users')
+})
+
+app.get("/editar_users", (req,res) =>{
+    res.render('editar_users')
 })
 
 //ativar sistema
