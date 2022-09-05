@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const hbs = require('express-handlebars')
 const PORT = process.env.PORT || 4000;
+const bodyParser = require('body-parser');
 
 //Configuração do HandleBars
 app.engine('hbs', hbs.engine({
@@ -10,6 +11,7 @@ app.engine('hbs', hbs.engine({
 }));
 app.set('view engine', 'hbs');
 
+app.use(bodyParser.urlencoded({extended:false}));
 
 //rota inicial 
 //rederiza o home.hbs para abra dentro da tag {{{body}}} no layout
@@ -27,6 +29,11 @@ res.render('exibir_users')
 
 app.get("/editar_users", (req,res) =>{
     res.render('editar_users')
+})
+
+//rota para receber o formulario
+app.post('/insert_users', (req,res)=>{
+    console.log(req.body);
 })
 
 //ativar sistema
