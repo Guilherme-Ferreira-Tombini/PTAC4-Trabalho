@@ -16,3 +16,5 @@ sequelize.authenticate().then(function(){
 }).catch(function(err){
     console.log("Falha na conecção");
 })
+
+//adicionado sql
