@@ -17,4 +17,5 @@ sequelize.authenticate().then(function(){
     console.log("Falha na conecção");
 })
 
+module.exports = {Sequelize, sequelize}
 //adicionado sql
