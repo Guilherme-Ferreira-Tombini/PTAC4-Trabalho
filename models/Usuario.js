@@ -20,3 +20,7 @@ const Usuario = db.sequelize.define('usuario', {
         allowNull: false
     }
 })
+
+Usuario.sync();
+
+module.exports = Usuario;
