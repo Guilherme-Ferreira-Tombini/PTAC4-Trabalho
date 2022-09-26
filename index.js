@@ -34,9 +34,7 @@ app.get("/editar_users", (req,res) =>{
 })
 
 //rota para receber o formulario
-app.post('/insert_users', (req,res)=>{
-    console.log(req.body);
-})
+
 
 //ativar sistema
 app.listen(PORT, ()=>{
@@ -44,7 +42,7 @@ app.listen(PORT, ()=>{
 })
 
 //criar a rota para receber o formulario de usuário.
-app.post('/insert_users', (req,res)=>{
+app.post("/insert_users", (req,res)=>{
     var nome = req.body.nome;
     var email = req.body.email;
     var senha = req.body.senha;
@@ -59,6 +57,6 @@ app.post('/insert_users', (req,res)=>{
         // req.session.succes = true;
         return res.redirect('/exibir_users');
     }).catch(function(erro){
-        console.log(`Ops, deu erro: ${erro}`)
+        console.log(`Ops, deu erro: ${erro}`);
     })
 }); //fim do post
