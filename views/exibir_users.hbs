@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card m-3 p-3">
     <h1 class="mt-2 mb-3 text-center">Exibir Usuário</h1>
+    {{#if table}}
     <table class="table table-striped mt-3" style="">
         <thead>
             <tr>
@@ -12,43 +13,26 @@
         </thead>
 
         <tbody>
+            {{#each usuarios}}
             <tr class="text-center">
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>{{id}}</td>
+                <td>{{nome}}</td>
+                <td>{{email}}</td>
                 <td>
                     <button type="button" class="btn btn-success m-1">Enviar</button>
                     <button type="button" class="btn btn-danger m-1">Limpar</button>
                 </td>
+                {{/each}}
             </tr>
-             <tr class="text-center">
-               <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                    <button type="button" class="btn btn-success m-1">Enviar</button>
-                    <button type="button" class="btn btn-danger m-1">Limpar</button>
-                </td>
-            </tr>
-            <tr class="text-center">
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                    <button type="button" class="btn btn-success m-1">Enviar</button>
-                    <button type="button" class="btn btn-danger m-1">Limpar</button>
-                </td>
-            </tr>
-            <tr class="text-center">
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                    <button type="button" class="btn btn-success m-1">Enviar</button>
-                    <button type="button" class="btn btn-danger m-1">Limpar</button>
-                </td>
             </tr>
         </tbody>
     </table>
+    {{else}}
+    <div class="card mt-4">
+      <div class="card-body">
+        Nenhum dado encontrado!
+      </div>
     </div>
+{{/if}}
+    </div>   
     </div>
