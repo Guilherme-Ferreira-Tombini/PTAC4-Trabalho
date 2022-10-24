@@ -1,25 +1,30 @@
 <div class="container p-2">
   <div class="card p-4 m-3">
+
+
     <h1 class="text-center">Editar Usuário</h1>
-    <form>
+
+    <form action="/update_users" method="post">
         <div class="form-group">
+             <input type="hidden" name="id" value="{{id}}">
             <label for="exampleInputEmail1">Nome de usuário</label>
-            <input type="text" class="form-control" placeholder="Digite o seu nome" id="nome" name="nome">
+            <input type="text" value="{{nome}}" class="form-control" placeholder="Digite o seu nome" id="nome" name="nome">
           </div>
         <div class="form-group mt-2">
           <label for="exampleInputEmail1">Endereço de email</label>
-          <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+          <input type="email" value="{{email}}" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
           <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
         </div>
         <div class="form-group">
             <label for="inputPassword5" class="form-label">Password</label>
-            <input type="password" name="senha" id="senha" class="form-control" aria-describedby="passwordHelpBlock">
+            <input type="password" value="{{senha}}" name="senha" id="senha" class="form-control" aria-describedby="passwordHelpBlock">
             <div id="passwordHelpBlock" class="form-text">
               Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
             </div>
         </div>
         <button type="submit" class="btn btn-warning mt-3">Salvar Alterações</button>
       </form>
+
     </div>
     </div>
 </div>

@@ -19,8 +19,11 @@
                 <td>{{nome}}</td>
                 <td>{{email}}</td>
                 <td>
-                    <button type="button" class="btn btn-success m-1">Enviar</button>
-                    <button type="button" class="btn btn-danger m-1">Limpar</button>
+                    <form action="/editar_users" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button class="btn btn-success m-1">Editar</button>
+                    </form>
+                    <button class="btn btn-danger m-1">Deletar</button>
                 </td>
                 {{/each}}
             </tr>
