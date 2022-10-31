@@ -69,6 +69,19 @@ app.post("/update_users", (req, res) =>{
             })
 })
 
+// DELETA O REGISTRO
+app.post("/deletar_users", async(req, res) =>{
+    var id = req.body.id;
+    
+    await Usuario.destroy({ where: {id}}).then((resultado) => {
+        console.log(resultado);
+        return res.redirect('/exibir_users');
+    }).catch((err) => {
+        console.log(err);
+    });
+})
+
+
 
 //rota para receber o formulario
 

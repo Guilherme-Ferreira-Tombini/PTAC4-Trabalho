@@ -23,7 +23,10 @@
                     <input type="hidden" name="id" value="{{id}}">
                     <button class="btn btn-success m-1">Editar</button>
                     </form>
+                    <form action="/deletar_users" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
                     <button class="btn btn-danger m-1">Deletar</button>
+                    </form>
                 </td>
                 {{/each}}
             </tr>
