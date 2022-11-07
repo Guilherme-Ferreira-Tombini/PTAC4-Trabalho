@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="card m-3 p-3">
+    <h1 class="mt-2 mb-3 text-center">Exibir Produto</h1>
+    {{#if table}}
+    <table class="table table-striped mt-3" style="">
+        <thead>
+            <tr>
+                <th class="text-center">#ID</th>
+                <th class="text-center">Nome</th>
+                <th class="text-center">preço</th>
+                <th class="text-center">Imagem</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each produtos}}
+            <tr class="text-center">
+                <td>{{id}}</td>
+                <td>{{nome_produto}}</td>
+                <td>{{preco}}</td>
+                <td>
+                    <img class="img-thumbnail" src="{{imagem}}">
+                </td>
+                <td>
+                    <form action="/editar_produto" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button class="btn btn-success m-1">Editar</button>
+                    </form>
+                    <form action="/deletar_produto" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button class="btn btn-danger m-1">Deletar</button>
+                    </form>
+                </td>
+                {{/each}}
+            </tr>
+        </tbody>
+    </table>
+    {{else}}
+    <div class="card mt-4">
+      <div class="card-body">
+        Nenhum dado encontrado!
+      </div>
+    </div>
+{{/if}}
+    </div>   
+    </div>

@@ -4,6 +4,7 @@ const hbs = require('express-handlebars');
 const PORT = process.env.PORT || 4000;
 const bodyParser = require('body-parser');
 const Usuario = require('./models/Usuario');
+const Produto = require('./models/Produto');
 
 //Configuração do HandleBars
 app.engine('hbs', hbs.engine({
@@ -111,3 +112,82 @@ app.post("/insert_users", (req,res)=>{
     })
 }); //fim do post
 
+
+// PRODUTOS 
+app.get("/cad_produto", (req, res)=>{
+    res.render('formulario_produto');
+})
+
+app.post("/insert_produto", (req,res)=>{
+    var nome_produto = req.body.nome_produto;
+    var preco = req.body.preco;
+    var imagem = req.body.imagem;
+
+    //Salvar no Banco de Dados
+    Produto.create({
+        nome_produto: nome_produto,
+        preco: preco,
+        imagem: imagem
+    }).then(function(){
+        console.log('Cadastro realizado com sucesso');
+        // req.session.succes = true;
+        return res.redirect('/exibir_produto');
+    }).catch(function(erro){
+        console.log(`Ops, deu erro: ${erro}`);
+    })
+}); //fim do post
+
+app.get("/exibir_produto", (req, res) =>{
+    Produto.findAll().then((valores)=>{
+        if(valores.length > 0){
+            return res.render('exibir_produto',{NavActiveUsers:true, table:true, produtos:valores.map(valores => valores.toJSON())});
+        } else{
+            res.render('exibir_produto', {NavActiveUsers:true, table:false});
+        }
+    }).catch((err)=>{
+        console.log(`Houve um problema: ${err}`)
+    })
+    })
+
+    app.post("/editar_produto", (req,res) =>{
+        var id = req.body.id;
+        Produto.findByPk(id).then((dados) => {
+            return res.render('editar_produto', {error: false, id: dados.id, nome_produto: dados.nome_produto, preco: dados.preco, imagem: dados.imagem});
+        }).catch((err) => {
+            console.log(err);
+            return res.render('editar_produto', {error: true, problema: 'Não é possível editar esse registro'});
+        })
+    });
+    
+    app.post("/update_produto", (req, res) =>{
+    var nome_produto = req.body.nome_produto;
+    var preco = req.body.preco;
+    var imagem = req.body.imagem;
+    
+        // ATUALIZA O REGITRO NO BANCO DE DADOS
+        Produto.update(
+            {
+                nome_produto: nome_produto,
+                preco: preco,
+                imagem: imagem,},
+                { where: {
+                    id: req.body.id}
+                }).then((resultado) => {
+                    console.log(resultado);
+                    return res.redirect('/exibir_produto');
+                }).catch((err) => {
+                    console.log(err);
+                })
+    })
+    
+    // DELETA O REGISTRO
+    app.post("/deletar_produto", async(req, res) =>{
+        var id = req.body.id;
+        
+        await Produto.destroy({ where: {id}}).then((resultado) => {
+            console.log(resultado);
+            return res.redirect('/exibir_produto');
+        }).catch((err) => {
+            console.log(err);
+        });
+    })
